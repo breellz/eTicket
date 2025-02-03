@@ -1,0 +1,30 @@
+{
+  "name": "eticket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "c:migration": "typeorm migration:create ./src/migrations/populateDb",
+    "g:migration": "dotenv -- cross-env NODE_ENV=development ts-node ./node_modules/typeorm/cli.js migration:generate ./src/migrations/product -d src/datasource.ts",
+    "migrate": "npx typeorm-ts-node-commonjs migration:run -d src/datasource",
+    "revert": "npx typeorm-ts-node-commonjs migration:revert -d src/datasource"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "pg": "^8.13.1",
+    "typeorm": "^0.3.20"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.0",
+    "cross-env": "^7.0.3",
+    "typescript": "^5.7.3"
+  }
+}
