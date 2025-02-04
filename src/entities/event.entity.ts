@@ -10,7 +10,7 @@ export class Event {
   @Column()
   title: string;
 
-  @Column()
+  @Column({ type: "text", nullable: true })
   description: string;
 
   @Column()

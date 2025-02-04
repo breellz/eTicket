@@ -1,7 +1,7 @@
 import { main } from "../../app";
 import datasource from "../../database/postgres";
 import { clearDatabase } from "../fixtures/setupDatabase";
-
+import { createEvent } from "../../controller/event.controller";
 jest.setTimeout(30000);
 
 
@@ -18,8 +18,8 @@ afterAll(async () => {
   await datasource.destroy();
 });
 
-describe("Authentication", () => {
-  it("Should sign up a new user", async () => {
+describe("Create Event test", () => {
+  it("Should create a new event", async () => {
 
   })
 
