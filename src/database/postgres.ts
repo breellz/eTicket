@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 import * as path from "path";
 
 class Postgres {
-  private static datasource: DataSource;
+  public static datasource: DataSource;
 
   public static get databaseUrl() {
     switch (process.env.NODE_ENV) {

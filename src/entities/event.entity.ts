@@ -1,5 +1,5 @@
 import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
-import { Bookings } from "./bookings.entity";
+import { Booking } from "./bookings.entity";
 import { WaitList } from "./waitList.entity";
 
 
@@ -22,8 +22,8 @@ export class Event {
   @Column()
   availableTickets: number;
 
-  @OneToMany(() => Bookings, (booking) => booking.event)
-  bookings: Bookings[];
+  @OneToMany(() => Booking, (booking) => booking.event)
+  bookings: Booking[];
 
   @OneToMany(() => WaitList, (waitlist) => waitlist.event)
   waitlists: WaitList[];

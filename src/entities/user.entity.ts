@@ -12,7 +12,7 @@ import {
   UpdateDateColumn,
   Not,
 } from "typeorm";
-import { Bookings } from "./bookings.entity";
+import { Booking } from "./bookings.entity";
 import { WaitList } from "./waitList.entity";
 
 
@@ -28,8 +28,8 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Bookings, (booking) => booking.user)
-  bookings: Bookings[];
+  @OneToMany(() => Booking, (booking) => booking.user)
+  bookings: Booking[];
 
   @OneToMany(() => WaitList, (waitlist) => waitlist.user)
   waitlists: WaitList[];

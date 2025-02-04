@@ -2,7 +2,7 @@ import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Man
 import { IUser, User } from "./user.entity";
 import { IEvent, Event } from "./event.entity";
 
-export class Bookings {
+export class Booking {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -35,5 +35,5 @@ export class Bookings {
 }
 
 export type IBookings = {
-  [T in keyof Bookings]: Bookings[T];
+  [T in keyof Booking]: Booking[T];
 };
