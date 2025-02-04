@@ -1,12 +1,11 @@
-import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, Entity } from "typeorm";
 import { IEvent, Event } from "./event.entity";
 import { IUser, User } from "./user.entity";
 
-
+@Entity()
 export class WaitList {
   @PrimaryGeneratedColumn()
   id: number;
-
 
   @ManyToOne(() => User, (user) => user.waitlists)
   @JoinColumn({ name: "userId" })

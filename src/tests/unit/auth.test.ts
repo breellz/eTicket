@@ -1,5 +1,5 @@
 import { main } from "../../app";
-import Postgres from "../../database/postgres";
+import datasource from "../../database/postgres";
 import { clearDatabase } from "../fixtures/setupDatabase";
 
 jest.setTimeout(30000);
@@ -15,7 +15,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await clearDatabase();
-  await Postgres.datasource.destroy();
+  await datasource.destroy();
 });
 
 describe("Authentication", () => {

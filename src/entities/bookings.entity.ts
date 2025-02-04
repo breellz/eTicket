@@ -1,7 +1,8 @@
-import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, Entity } from "typeorm";
 import { IUser, User } from "./user.entity";
 import { IEvent, Event } from "./event.entity";
 
+@Entity()
 export class Booking {
   @PrimaryGeneratedColumn()
   id: number;

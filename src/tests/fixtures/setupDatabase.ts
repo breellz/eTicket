@@ -1,7 +1,7 @@
 
-import Postgres from "../../database/postgres";
+import { ObjectType } from 'typeorm';
+import datasource from "../../database/postgres";
 import { User } from "../../entities/user.entity";
-import { DataSource, ObjectType } from 'typeorm';
 
 
 const userData = [
@@ -21,8 +21,7 @@ const userData = [
 
 
 export const setUpDb = async () => {
-  await Postgres.connect();
-  const datasource = Postgres.datasource;
+  await datasource.initialize();
 
   const userRepository = datasource.getRepository(User);
   const users = userRepository.create(userData);
@@ -34,12 +33,12 @@ export const setUpDb = async () => {
 
 
 export const clearDatabase = async () => {
-  const entityMetadatas = Postgres.datasource.entityMetadatas;
+  const entityMetadatas = datasource.entityMetadatas;
   const orderOfDeletion = ['WaitList', 'Booking', 'Event', 'User'];
   for (const entityName of orderOfDeletion) {
     const metadata = entityMetadatas.find(metadata => metadata.name === entityName);
     if (metadata) {
-      const repository = Postgres.datasource.getRepository(metadata.target as ObjectType<any>);
+      const repository = datasource.getRepository(metadata.target as ObjectType<any>);
       await repository.delete({});
     }
   }

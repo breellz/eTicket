@@ -1,8 +1,8 @@
-import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany, Entity } from "typeorm";
 import { Booking } from "./bookings.entity";
 import { WaitList } from "./waitList.entity";
 
-
+@Entity()
 export class Event {
   @PrimaryGeneratedColumn()
   id: number;

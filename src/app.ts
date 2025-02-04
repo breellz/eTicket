@@ -1,13 +1,13 @@
 import express, { Request, Response } from "express";
-import Postgres from "./database/postgres";
 import "dotenv/config";
+import datasource from "./database/postgres";
 
 
 export const main = async (): Promise<express.Application> => {
   try {
     const app: express.Application = express();
 
-    await Postgres.connect();
+    await datasource.initialize();
 
     app.get("/", (req: Request, res: Response) => {
       res.send("eTicket database online");

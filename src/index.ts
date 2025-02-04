@@ -1,6 +1,5 @@
 import { main } from "./app";
-import Postgres from "./database/postgres";
-
+import datasource, { disconnect } from "./database/postgres";
 const start = async () => {
   const server = await main();
 
@@ -12,7 +11,7 @@ const start = async () => {
   });
 
   server.on("close", async () => {
-    await Postgres.disconnect()
+    await disconnect(datasource)
   });
 };
 
