@@ -52,7 +52,7 @@ describe('Create Event test', () => {
   });
 
   it('should return validation error if input is invalid', async () => {
-    req.body.title = ''; // Invalid title
+    req.body.title = '';
     const validationError = createEventValidation(req.body).error;
     (sendErrorResponse as jest.Mock).mockImplementation((res, message, statusCode) => {
       res.status(statusCode).send({ error: message });
