@@ -2,30 +2,66 @@
 import { ObjectType } from 'typeorm';
 import datasource from "../../database/postgres";
 import { User } from "../../entities/user.entity";
+import { Event } from "../../entities/event.entity";
+import bcrypt from "bcryptjs";
 
-
-const userData = [
+export const userData = [
   {
     username: 'John',
-    passsword: '1234',
+    password: '1234',
   },
   {
     username: 'Johndoe',
-    passsword: '1234',
+    password: '1234',
   }, {
     username: 'Johnray',
-    passsword: '1234',
-  },]
+    password: '1234',
+  },
+]
+
+
+export const eventData = [
+  {
+    title: 'Event 1',
+    description: 'Event 1 description',
+    date: new Date(),
+    location: 'Lagos',
+    availableTickets: 100,
+  },
+  {
+    title: 'Event 2',
+    description: 'Event 2 description',
+    date: new Date(),
+    location: 'Abuja',
+    availableTickets: 0,
+  },
+  {
+    title: 'Event 3',
+    description: 'Event 3 description',
+    date: new Date(),
+    location: 'Ibadan',
+    availableTickets: 100,
+  },
+]
 
 
 
 
 export const setUpDb = async () => {
-  await datasource.initialize();
 
+  const userDataWithBcrypt = await Promise.all(userData.map(async (user) => {
+    return {
+      ...user,
+      password: await bcrypt.hash(user.password, 8)
+    }
+  }));
   const userRepository = datasource.getRepository(User);
-  const users = userRepository.create(userData);
+  const users = userRepository.create(userDataWithBcrypt);
   await userRepository.save(users);
+
+  const eventReposiotry = datasource.getRepository(Event);
+  const events = eventReposiotry.create(eventData);
+  await eventReposiotry.save(events);
 
   console.log("DB populated successfully")
 }

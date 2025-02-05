@@ -15,12 +15,6 @@ export class Booking {
   @JoinColumn({ name: "eventId" })
   event: IEvent;
 
-  @Column()
-  eventId: number;
-
-  @Column()
-  tickets: number;
-
   @CreateDateColumn({
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP(6)",

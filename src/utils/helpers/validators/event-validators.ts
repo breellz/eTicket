@@ -25,8 +25,15 @@ const createEventValidation = (data: ICreateEventData) => {
   return schema.validate(data);
 };
 
+const bookEventValidation = (data: { eventId: string }) => {
+  const schema = Joi.object({
+    eventId: Joi.number().required(),
+  });
+  return schema.validate(data);
+}
 
 export {
-  createEventValidation
+  createEventValidation,
+  bookEventValidation
 };
 

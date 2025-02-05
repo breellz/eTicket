@@ -1,5 +1,9 @@
-import { createEvent } from "./event.service";
+import { createEvent, getEventById, bookEvent, isEventBookedByUser, addToWaitList } from "./event.service";
 
 export default {
-  createEvent
+  createEvent,
+  getEventById,
+  bookEvent,
+  isEventBookedByUser,
+  addToWaitList
 }

@@ -14,7 +14,6 @@ const databaseUrl = () => {
   }
 }
 
-
 const datasource = new DataSource({
   type: "postgres",
   url: databaseUrl(),
